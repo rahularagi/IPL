@@ -30,9 +30,9 @@ static public void read_m(String [] s){
     m.setdl_applied(Integer.parseInt(s[9]));
     m.setwinnwr(s[10]);
 
-   m.setwin_by_runs(Integer.parseInt(s[11]));
+    m.setwin_by_runs(Integer.parseInt(s[11]));
     m.setwin_by_wickets(Integer.parseInt(s[12]));
-   m.setplayer_of_match(s[13]);
+    m.setplayer_of_match(s[13]);
     m.setvenue(s[14]);
     m.setumpire1(s[15]);
     m.setumpire2(s[16]);
@@ -67,10 +67,45 @@ static public void read_m(String [] s){
                e.printStackTrace();
             }
         }
+//* number of matches played per year;
+        Map<Integer,Integer> t_m=new HashMap<>();
 
-        for (int i=0;i<ml.size();i++){
-            System.out.println((i+1)+". "+ml.get(i).getid()+"  "+ml.get(i).getseason()+" "+ml.get(i).getcity());
+        for(int i=0;i< ml.size();i++){
+            if(!t_m.containsKey(ml.get(i).getseason())){
+                t_m.put(ml.get(i).getseason(),1);
+            }
+            else{
+                t_m.put(ml.get(i).getseason(),(t_m.get(ml.get(i).getseason())+1));
+            }
         }
+        System.out.println("total number of years" +t_m.size());
+        for(Map.Entry m : t_m.entrySet()){
+            System.out.println("Year: "+m.getKey()+"  number of matches: "+m.getValue());
+        }
+        System.out.println();
+
+
+        // Number of matches win by team
+
+        Map<String,Integer> w=new HashMap();
+
+        for(int i=0;i<ml.size();i++){
+            if(ml.get(i).getwinnwr()!="") {
+                if (!w.containsKey(ml.get(i).getwinnwr())) {
+                    w.put(ml.get(i).getwinnwr(), 1);
+                } else {
+                    w.put(ml.get(i).getwinnwr(), (w.get(ml.get(i).getwinnwr()) + 1));
+                }
+            }
+        }
+
+
+        System.out.println("total number of teams" +w.size());
+        for(Map.Entry m : w.entrySet()){
+            System.out.println("team: "+m.getKey()+" number of times win: "+m.getValue());
+        }
+
+
     }
 }
 
