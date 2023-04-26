@@ -96,70 +96,70 @@ public class Match {
      */
 
 
-    public int getid(int x){
+    public int getid(){
        return this.id;
     }
 
-    public int getseason(int x){
+    public int getseason(){
         return this.season;
     }
-    public String getcity(String s){
+    public String getcity(){
         return this.city;
     }
-    public String getdate(String s){
+    public String getdate(){
         return this.date;
     }
 
-    public String getteam1(String s){
+    public String getteam1(){
         return this.team1;
     }
 
-    public String getteam2(String s){
+    public String getteam2(){
         return this.team2;
     }
 
-    public String gettoss_winner(String s){
+    public String gettoss_winner(){
         return this.toss_winner;
     }
 
-    public String gettoss_decision(String s){
+    public String gettoss_decision(){
         return this.toss_decision;
     }
 
-    public String getresult(String s){
+    public String getresult(){
         return this.result;
     }
 
-    public int getdl_applied(int x){
+    public int getdl_applied(){
         return this.dl_applied;
     }
 
-    public String getwinnwr(String s){
+    public String getwinnwr(){
         return this.winner;
     }
-    public int getwin_by_runs(int x){
+    public int getwin_by_runs(){
         return this.win_by_runs;
     }
 
-    public int getwin_by_wickets(int x){
+    public int getwin_by_wickets(){
         return this.win_by_wickets;
     }
 
-    public String getplayer_of_match(String s){
+    public String getplayer_of_match(){
         return this.player_of_match;
     }
 
-    public String getvenue(String s){
+    public String getvenue(){
         return this.venue;
     }
 
-    public String getumpire1(String s){
+    public String getumpire1(){
         return this.umpire1;
     }
-    public String getumpire2(String s){
+    public String getumpire2(){
         return this.umpire2;
     }
-    public String getumpire3(String s){
+    public String getumpire3(){
         return this.umpire3;
     }
 }

@@ -108,84 +108,84 @@ public class Deliveries {
  // getter method
     // **********
 
-    public int getmatch_id(int x){
+    public int getmatch_id(){
         return this.match_id;
     }
-    public int getinning(int x){
+    public int getinning(){
         return this.inning;
     }
 
-    public String getbatting_team(String s){
+    public String getbatting_team(){
         return this.batting_team;
     }
 
-    public String getbowling_team(String s){
+    public String getbowling_team(){
         return this.bowling_team;
     }
-    public int getover(int x){
+    public int getover(){
         return this.over;
     }
 
-    public int getball(int x){
+    public int getball(){
         return this.ball;
     }
 
-    public String getbatsman(String s){
+    public String getbatsman(){
         return this.batsman;
     }
 
-    public String getnon_striker(String s){
+    public String getnon_striker(){
         return this.non_striker;
     }
 
-    public String getbowler(String s){
+    public String getbowler(){
         return this.bowler;
     }
 
-    public int getis_super_over(int x){
+    public int getis_super_over(){
         return this.is_super_over;
     }
 
-    public int getwide_runs(int x){
+    public int getwide_runs(){
         return this.wide_runs;
     }
 
-    public int getbye_runs(int x){
+    public int getbye_runs(){
         return this.bye_runs;
     }
 
-    public int getlegbye_runs(int x){
+    public int getlegbye_runs(){
         return this.legbye_runs;
     }
-    public int getnoball_runs(int x){
+    public int getnoball_runs(){
         return this.noball_runs;
     }
 
-    public int getpenalty_runs(int x){
+    public int getpenalty_runs(){
         return this.penalty_runs;
     }
 
-    public int getbatsman_runs(int x){
+    public int getbatsman_runs(){
         return this.batsman_runs;
     }
 
-    public int getextra_runs(int x){
+    public int getextra_runs(){
         return this.extra_runs;
     }
 
-    public int gettotal_runs(int x){
+    public int gettotal_runs(){
         return this.total_runs;
     }
 
-    public String getplayer_dismissed(String s){
+    public String getplayer_dismissed(){
         return this.player_dismissed;
     }
 
-    public String getdismissal_kind(String s){
+    public String getdismissal_kind(){
         return this.dismissal_kind;
     }
 
-    public String getfielder(String s){
+    public String getfielder(){
         return this.fielder;
     }
 
