@@ -7,8 +7,42 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Deliveries_reader {
+public class DR {
     static public List<Deliveries> dl=new ArrayList ();
+
+
+    public DR(){
+
+        String file="src//deliveries.csv";
+        BufferedReader reader=null;
+        String line="";
+
+        try{
+            reader=new BufferedReader(new FileReader(file));
+            reader.readLine();
+            while((line= reader.readLine()) !=null){
+                String [] row=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+
+                read_d(row);
+            }
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
+        finally{
+            try{
+                reader.close();
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+
+        /*for(int i=0;i<dl.size();i++){
+            System.out.println((i+1)+"  "+dl.get(i).getmatch_id()+"  "+dl.get(i).getinning()+" "+dl.get(i).getbatting_team()+" "+dl.get(i).getbowling_team());
+        }*/
+    }
+
     static public void read_d(String [] s){
         Deliveries d=new Deliveries();
 
@@ -56,41 +90,4 @@ public class Deliveries_reader {
         dl.add(d);
     }
 
-    public static void main(String[] args){
-
-        String file="src//deliveries.csv";
-        BufferedReader reader=null;
-        String line="";
-
-        try{
-            reader=new BufferedReader(new FileReader(file));
-            reader.readLine();
-            while((line= reader.readLine()) !=null){
-                String [] row=line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-
-                read_d(row);
-            }
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        finally{
-            try{
-                reader.close();
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
-        }
-
-        for(int i=0;i<dl.size();i++){
-            System.out.println((i+1)+"  "+dl.get(i).getmatch_id()+"  "+dl.get(i).getinning()+" "+dl.get(i).getbatting_team()+" "+dl.get(i).getbowling_team());
-        }
-
-        Map<String,Integer> ex=new HashMap<>();
-
-        for (int i=0)
-
-
-    }
 }

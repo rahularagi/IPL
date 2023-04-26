@@ -1,24 +1,141 @@
 package problems;
-import java.util.*;
-import reader.Match_reader;
 
+import reader.DR;
+import reader.MR;
+
+import java.sql.SQLOutput;
+import java.util.*;
 import java.util.HashMap;
 
 public class Number_of_matches {
     public static void main(String [] args){
+
+        MR m1=new MR();
+        DR d1=new DR();
+
+
+
+
+        //* number of matches played per year;
         Map<Integer,Integer> t_m=new HashMap<>();
 
-        for(int i=0;i< Match_reader.ml.size();i++){
-            if(!t_m.containsKey(Match_reader.ml.get(i).getseason())){
-                t_m.put(Match_reader.ml.get(i).getseason(),1);
+        for(int i=0;i< MR.ml.size();i++){
+            if(!t_m.containsKey(MR.ml.get(i).getseason())){
+                t_m.put(MR.ml.get(i).getseason(),1);
             }
             else{
-                t_m.put(Match_reader.ml.get(i).getseason(),(t_m.get(Match_reader.ml.get(i).getseason())+1));
+                t_m.put(MR.ml.get(i).getseason(),(t_m.get(MR.ml.get(i).getseason())+1));
             }
         }
-        System.out.println("hiiiii"+t_m.size());
+        System.out.println("total number of years: " +t_m.size());
         for(Map.Entry m : t_m.entrySet()){
-            System.out.println("Year: "+m.getKey()+" number of matches: "+m.getValue());
+            System.out.println("Year: "+m.getKey()+"  number of matches: "+m.getValue());
         }
+        System.out.println();
+        System.out.println();
+
+
+        // Number of matches win by team
+
+        Map<String,Integer> w=new HashMap();
+
+        for(int i=0;i<MR.ml.size();i++){
+            if(MR.ml.get(i).getwinnwr()!="") {
+                if (!w.containsKey(MR.ml.get(i).getwinnwr())) {
+                    w.put(MR.ml.get(i).getwinnwr(), 1);
+                } else {
+                    w.put(MR.ml.get(i).getwinnwr(), (w.get(MR.ml.get(i).getwinnwr()) + 1));
+                }
+            }
+        }
+
+
+        System.out.println("total number of teams: " +w.size());
+        for(Map.Entry m : w.entrySet()){
+            System.out.println("team: "+m.getKey()+" number of times win: "+m.getValue());
+        }
+        System.out.println();
+        System.out.println();
+
+//*year 2016 get extra runs conceded per team
+        Map<String,Integer> ex=new HashMap<>();
+
+        for(int i=0;i< MR.ml.size();i++){
+            if(MR.ml.get(i).getseason()==2016){
+                for(int j=0;j<DR.dl.size();j++){
+                    if(MR.ml.get(i).getid()==DR.dl.get(j).getmatch_id()&&DR.dl.get(j).getextra_runs()!=0){
+                        if(!ex.containsKey(DR.dl.get(j).getbatting_team())){
+                            ex.put(DR.dl.get(j).getbatting_team(),DR.dl.get(j).getextra_runs());
+                        }
+                        else{
+                            ex.put(DR.dl.get(j).getbatting_team(),(ex.get(DR.dl.get(j).getbatting_team())+DR.dl.get(j).getextra_runs()));
+                        }
+                    }
+                }
+            }
+        }
+
+        System.out.println("total number of teams: " +ex.size());
+        for(Map.Entry m : ex.entrySet()){
+            System.out.println("team: "+m.getKey()+" Extra runs: "+m.getValue());
+        }
+        System.out.println();
+        System.out.println();
+
+
+        //for the year of 2015 top economical bowler
+        Map<String,Integer> tb=new TreeMap<>();
+        Map<String,Integer> tr=new TreeMap<>();
+        Map<Float,String> ec=new TreeMap<>();
+
+
+        for(int i=0;i<DR.dl.size();i++){
+            if(!tb.containsKey(DR.dl.get(i).getbowler())){
+                tb.put(DR.dl.get(i).getbowler(),1);
+                tr.put(DR.dl.get(i).getbowler(),DR.dl.get(i).gettotal_runs());
+            }
+            else{
+                tb.put(DR.dl.get(i).getbowler(),(tb.get(DR.dl.get(i).getbowler())+1));
+                tr.put(DR.dl.get(i).getbowler(),(tb.get(DR.dl.get(i).getbowler())+DR.dl.get(i).gettotal_runs()));
+            }
+            float over=tb.get(DR.dl.get(i).getbowler())/6f;
+            float runs=tr.get(DR.dl.get(i).getbowler());
+            float ecnomi=runs/over;
+            ec.put(ecnomi,DR.dl.get(i).getbowler());
+        }
+
+        //System.out.println("total number of teams: " +ex.size());
+        for(Map.Entry m : ec.entrySet()){
+            System.out.println(" Player_name: "+m.getValue()+"   Economi: "+m.getKey());
+        }
+
+
+        System.out.println();
+        System.out.println();
+
+
+
+
+
+
+
+        //Total runs of each player in ipl
+        Map<String,Integer> rn=new HashMap<>();
+
+        for(int i=0;i<DR.dl.size();i++){
+            if(!rn.containsKey(DR.dl.get(i).getbatsman())){
+                rn.put(DR.dl.get(i).getbatsman(),DR.dl.get(i).getbatsman_runs());
+            }
+            else{
+                rn.put(DR.dl.get(i).getbatsman(),( rn.get(DR.dl.get(i).getbatsman())+DR.dl.get(i).getbatsman_runs()));
+            }
+        }
+
+        System.out.println("total number of players: " +rn.size());
+        for(Map.Entry m : rn.entrySet()){
+            System.out.println("Player_name: "+m.getKey()+" Total runs: "+m.getValue());
+        }
+
+
     }
 }
