@@ -3,7 +3,7 @@ package problems;
 import reader.DR;
 import reader.MR;
 
-import java.sql.SQLOutput;
+
 import java.util.*;
 import java.util.HashMap;
 
@@ -86,30 +86,35 @@ public class Number_of_matches {
         //for the year of 2015 top economical bowler
         Map<String,Integer> tb=new TreeMap<>();
         Map<String,Integer> tr=new TreeMap<>();
-        Map<Float,String> ec=new TreeMap<>();
+        TreeMap<Float,String> ec=new TreeMap<>();
 
 
-        for(int i=0;i<DR.dl.size();i++){
-            if(!tb.containsKey(DR.dl.get(i).getbowler())){
-                tb.put(DR.dl.get(i).getbowler(),1);
-                tr.put(DR.dl.get(i).getbowler(),DR.dl.get(i).gettotal_runs());
+        for(int j=0;j<MR.ml.size();j++) {
+            if(MR.ml.get(j).getseason()==2015) {
+
+                for (int i = 0; i < DR.dl.size(); i++) {
+                    if(MR.ml.get(j).getid()==DR.dl.get(i).getmatch_id()) {
+                        if (!tb.containsKey(DR.dl.get(i).getbowler())) {
+                            tb.put(DR.dl.get(i).getbowler(), 1);
+                            tr.put(DR.dl.get(i).getbowler(), DR.dl.get(i).gettotal_runs());
+                        } else {
+                            tb.put(DR.dl.get(i).getbowler(), (tb.get(DR.dl.get(i).getbowler()) + 1));
+                            tr.put(DR.dl.get(i).getbowler(), (tb.get(DR.dl.get(i).getbowler()) + DR.dl.get(i).gettotal_runs()));
+                        }
+                        float over = tb.get(DR.dl.get(i).getbowler()) / 6f;
+                        float runs = tr.get(DR.dl.get(i).getbowler());
+                        float ecnomi = runs / over;
+                        if(ecnomi!=0) {
+                            ec.put(ecnomi, DR.dl.get(i).getbowler());
+                        }
+                    }
+                }
             }
-            else{
-                tb.put(DR.dl.get(i).getbowler(),(tb.get(DR.dl.get(i).getbowler())+1));
-                tr.put(DR.dl.get(i).getbowler(),(tb.get(DR.dl.get(i).getbowler())+DR.dl.get(i).gettotal_runs()));
-            }
-            float over=tb.get(DR.dl.get(i).getbowler())/6f;
-            float runs=tr.get(DR.dl.get(i).getbowler());
-            float ecnomi=runs/over;
-            ec.put(ecnomi,DR.dl.get(i).getbowler());
         }
 
-        //System.out.println("total number of teams: " +ex.size());
-        for(Map.Entry m : ec.entrySet()){
-            System.out.println(" Player_name: "+m.getValue()+"   Economi: "+m.getKey());
-        }
 
 
+        System.out.println("economical bowler:  "+ec.firstEntry());
         System.out.println();
         System.out.println();
 

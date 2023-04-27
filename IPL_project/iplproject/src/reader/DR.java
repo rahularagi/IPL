@@ -38,9 +38,7 @@ public class DR {
             }
         }
 
-        /*for(int i=0;i<dl.size();i++){
-            System.out.println((i+1)+"  "+dl.get(i).getmatch_id()+"  "+dl.get(i).getinning()+" "+dl.get(i).getbatting_team()+" "+dl.get(i).getbowling_team());
-        }*/
+
     }
 
     static public void read_d(String [] s){
