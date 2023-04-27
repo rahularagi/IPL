@@ -7,7 +7,7 @@ import reader.MR;
 import java.util.*;
 import java.util.HashMap;
 
-public class Number_of_matches {
+public class Problems {
     public static void main(String [] args){
 
         MR m1=new MR();
@@ -17,6 +17,7 @@ public class Number_of_matches {
 
 
         //* number of matches played per year;
+        System.out.println("number of matches played per year:---------");
         Map<Integer,Integer> t_m=new HashMap<>();
 
         for(int i=0;i< MR.ml.size();i++){
@@ -33,10 +34,12 @@ public class Number_of_matches {
         }
         System.out.println();
         System.out.println();
+        System.out.println();
+        System.out.println();
 
 
         // Number of matches win by team
-
+        System.out.println("Number of matches win by team");
         Map<String,Integer> w=new HashMap();
 
         for(int i=0;i<MR.ml.size();i++){
@@ -56,8 +59,11 @@ public class Number_of_matches {
         }
         System.out.println();
         System.out.println();
+        System.out.println();
+        System.out.println();
 
 //*year 2016 get extra runs conceded per team
+        System.out.println("year 2016 get extra runs conceded per team");
         Map<String,Integer> ex=new HashMap<>();
 
         for(int i=0;i< MR.ml.size();i++){
@@ -81,9 +87,12 @@ public class Number_of_matches {
         }
         System.out.println();
         System.out.println();
+        System.out.println();
+        System.out.println();
 
 
         //for the year of 2015 top economical bowler
+        System.out.println("for the year of 2015 top economical bowler");
         Map<String,Integer> tb=new TreeMap<>();
         Map<String,Integer> tr=new TreeMap<>();
         TreeMap<Float,String> ec=new TreeMap<>();
@@ -117,6 +126,8 @@ public class Number_of_matches {
         System.out.println("economical bowler:  "+ec.firstEntry());
         System.out.println();
         System.out.println();
+        System.out.println();
+        System.out.println();
 
 
 
@@ -125,6 +136,7 @@ public class Number_of_matches {
 
 
         //Total runs of each player in ipl
+        System.out.println("Total runs of each player in ipl");
         Map<String,Integer> rn=new HashMap<>();
 
         for(int i=0;i<DR.dl.size();i++){
